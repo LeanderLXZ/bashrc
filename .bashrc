@@ -84,6 +84,7 @@ alias ..='cd ..'
 alias ~='cd ~'
 alias Leander='cd ~/Leander'
 alias md='mkdir -p'
+alias jn='jupyter-notebook'
 
 # Vim
 alias vim='/opt/vim80/bin/vim'
