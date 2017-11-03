@@ -83,6 +83,8 @@ alias l='ls -CF'
 alias ..='cd ..'
 alias ~='cd ~'
 alias Leander='cd ~/Leander'
+alias L='cd ~/Leander'
+alias a='cd ~/Leander/acgc'
 alias md='mkdir -p'
 alias jn='jupyter-notebook'
 
