@@ -89,9 +89,9 @@ alias md='mkdir -p'
 alias jn='jupyter-notebook'
 
 # Vim
-alias vim='/opt/vim80/bin/vim'
-alias vi='/opt/vim80/bin/vim'
-alias vimdiff='/opt/vim80/bin/vimdiff'
+# alias vim='/opt/vim80/bin/vim'
+# alias vi='/opt/vim80/bin/vim'
+# alias vimdiff='/opt/vim80/bin/vimdiff'
 
 # Git
 alias g='git'
