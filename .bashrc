@@ -84,14 +84,14 @@ alias ..='cd ..'
 alias ~='cd ~'
 alias Leander='cd ~/Leander'
 alias L='cd ~/Leander'
-alias a='cd ~/Leander/acgc'
+alias s='cd ~/Leander/stocks-analyze/src'
 alias md='mkdir -p'
 alias jn='jupyter-notebook'
 
 # Vim
-# alias vim='/opt/vim80/bin/vim'
-# alias vi='/opt/vim80/bin/vim'
-# alias vimdiff='/opt/vim80/bin/vimdiff'
+alias vim='/opt/leander/vim80/bin/vim'
+alias vi='/opt/leander/vim80/bin/vim'
+alias vimdiff='/opt/leander/vim80/bin/vimdiff'
 
 # Git
 alias g='git'
@@ -136,15 +136,16 @@ fi
 #fi
 
 # added by Anaconda3 4.4.0 installer
-export "PATH=/home/leander/anaconda3/bin:$PATH"
+# export "PATH=/home/leander/anaconda3/bin:$PATH"
 
 function parse_git_dirty {
     local git_status=$(git status 2> /dev/null);
     if [[ "$git_status" != "" ]]; then
         local git_now;
         local git_status_head_two=$(git status | head -n2 | tail -n1);
-        if [[ "$git_status_head_two" =~ Your\ branch\ is\ up-to-date ]]; then
+        if [[ "$git_status_head_two" =~ Your\ branch\ is\ up\ to\ date ]]; then
             local git_status_head_three=$(git status | head -n3 | tail -n1);
+            local git_status_head_four=$(git status | head -n4 | tail -n1);
             if [[ "$git_status_head_three" =~ nothing\ to\ commit ]]; then
                 git_now="✓";
             elif [[ "$git_status_head_three" =~ Changes\ not\ staged ]]; then
@@ -152,6 +153,14 @@ function parse_git_dirty {
             elif [[ "$git_status_head_three" =~ Changes\ to\ be\ committed ]]; then
                 git_now='⚑';
             elif [[ "$git_status_head_three" =~ Untracked\ files ]]; then
+                git_now="✚";
+            elif [[ "$git_status_head_four" =~ nothing\ to\ commit ]]; then
+                git_now="✓";
+            elif [[ "$git_status_head_four" =~ Changes\ not\ staged ]]; then
+                git_now='⚐';
+            elif [[ "$git_status_head_four" =~ Changes\ to\ be\ committed ]]; then
+                git_now='⚑';
+            elif [[ "$git_status_head_four" =~ Untracked\ files ]]; then
                 git_now="✚";
             fi
         elif [[ "$git_status_head_two" =~ Your\ branch\ is\ ahead ]]; then
@@ -192,3 +201,19 @@ function git_branch {
 }
 
 export PS1='\[\033[01;32m\][\[\033[01;36m\]\u \[\033[01;32m\]> \[\033[01;36m\]\W\[\033[01;32m\]] \[\033[01;35m\]$(git_branch)\[\033[01;32m\]➜ \[\033[00;39m\]'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/leander/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/leander/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/leander/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/leander/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
